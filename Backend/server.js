@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { connectDB } from './db/conn.js'
+import studentData from './Routes/studentData.js'
 
 dotenv.config()
 
@@ -14,6 +15,5 @@ app.listen(PORT, () => {
     console.log(`The website is running on port ${PORT}`)
 })
 
-app.use('/',(req,res)=>{
-    res.send("hello world")
-})
+
+app.use('/data',studentData)
