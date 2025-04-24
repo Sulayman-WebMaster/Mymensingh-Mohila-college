@@ -1,2 +1,11 @@
 import mongoose from "mongoose";
-mongoose.connect(process.env.MONGODB_URL)
+
+export const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/');
+    console.log("✅ MongoDB connected successfully");
+  } catch (e) {
+    console.error("❌ MongoDB connection problem:", e.message);
+    process.exit(1); // Exit the process with failure
+  }
+};
